@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@types/node": "^24.3.0",
+    "copyfiles": "^2.4.1",
     "typescript": "^5.9.2"
   },
   "dependencies": {
@@ -8,7 +9,7 @@
     "tailwindcss": "^4.1.12"
   },
   "scripts": {
-    "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "build:css": "tailwindcss -i ./src/index.css -o ./dist/output.css --minify",
     "build:ts": "tsc",
     "dev": "tsc --watch",
     "copy:html": "cp ./src/index.html ./dist/index.html",
