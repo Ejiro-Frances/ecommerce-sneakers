@@ -1,6 +1,6 @@
 # E-commerce product page
 
-![Design preview for the E-commerce product page coding challenge](./design/desktop-preview.jpg)
+![Design preview for the E-commerce product page coding challenge](./public/design/desktop-preview.jpg)
 
 ## Table of contents
 
@@ -30,12 +30,12 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+<!-- ![](./puscreenshot.jpg) -->
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [View solution](https://github.com/Ejiro-Frances/ecommerce-sneakers.git)
+- Live Site URL: [View here](https://ecommerce-sneakers-lilac.vercel.app/)
 
 ## My process
 
