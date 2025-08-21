@@ -1,49 +1,78 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // images
-var mainImage = document.querySelector(".main-image");
-var thumbnails = document.querySelectorAll(".thumbnail img");
-console.log(mainImage);
-console.log(thumbnails);
+const mainImage = document.querySelector(".main-image");
+const thumbnails = document.querySelectorAll(".thumbnail img");
+const spinner = document.getElementById("spinner");
 // quantity controls
-var quantityIncrease = document.getElementById("increase");
-var quantityDecrease = document.getElementById("decrease");
-var quantityValue = document.getElementById("quantity");
+const quantityIncrease = document.getElementById("increase");
+const quantityDecrease = document.getElementById("decrease");
+const quantityValue = document.getElementById("quantity");
 // ===============================
 // Thumbnail click functionality
 // ===============================
-thumbnails.forEach(function (thumb) {
-    thumb.addEventListener("click", function () {
-        var _a;
-        if (mainImage) {
-            // Extract file name from thumbnail src
-            var fileName = thumb.src.split("/").pop() || "";
-            // Build full image path inside /public/images
-            var fullImagePath = "./public/images/".concat(fileName.replace("-thumbnail", ""));
-            mainImage.src = fullImagePath;
-            mainImage.alt = thumb.alt;
-        }
-        // Highlight selected thumbnail
-        thumbnails.forEach(function (t) { var _a; return (_a = t.parentElement) === null || _a === void 0 ? void 0 : _a.classList.remove("border-(--primary)"); });
-        (_a = thumb.parentElement) === null || _a === void 0 ? void 0 : _a.classList.add("border-(--primary)");
-    });
-});
 // thumbnails.forEach((thumb) => {
 //   thumb.addEventListener("click", () => {
-//     if (mainImage) {
-//       mainImage.src = thumb.src;
+//     if (mainImage && spinner) {
+//       // Show spinner
+//       spinner.classList.remove("hidden");
+//       spinner.classList.add("flex");
+//       // Extract file name from thumbnail src
+//       const fileName = thumb.src.split("/").pop() || "";
+//       // Build full image path inside /public/images
+//       const fullImagePath = `./public/images/${fileName.replace(
+//         "-thumbnail",
+//         ""
+//       )}`;
+//       // Preload new image
+//       const tempImg = new Image();
+//       tempImg.src = fullImagePath;
+//       tempImg.onload = () => {
+//         // Swap main image src once loaded
+//         mainImage.src = fullImagePath;
+//         mainImage.alt = thumb.alt;
+//         // Hide spinner
+//         spinner.classList.add("hidden");
+//       };
+//       //   mainImage.src = fullImagePath;
 //       mainImage.alt = thumb.alt;
 //     }
-//     // Highlight active thumbnail
+//     // Highlight selected thumbnail
 //     thumbnails.forEach((t) =>
 //       t.parentElement?.classList.remove("border-(--primary)")
 //     );
 //     thumb.parentElement?.classList.add("border-(--primary)");
 //   });
 // });
+thumbnails.forEach((thumb) => {
+    const img = thumb.querySelector("img");
+    thumb.addEventListener("click", () => {
+        if (mainImage && img) {
+            const newSrc = img.getAttribute("data-main");
+            if (!newSrc)
+                return;
+            // Show spinner
+            spinner?.classList.remove("hidden");
+            // Preload image before replacing
+            const tempImg = new Image();
+            tempImg.src = newSrc;
+            tempImg.onload = () => {
+                mainImage.src = newSrc;
+                // Hide spinner
+                spinner?.classList.add("hidden");
+            };
+        }
+        // Remove active highlight
+        thumbnails.forEach((t) => t.classList.remove("border-(--primary)", "opacity-70"));
+        // Add active highlight
+        thumb.classList.add("border-(--primary)", "opacity-70");
+    });
+});
 // ===============================
 // Quantity button functionality
 // ===============================
 // set default quantity to 1
-var quantity = 1;
+let quantity = 1;
 // update UI
 function updateQuantity() {
     quantityValue.textContent = quantity.toString();
@@ -58,12 +87,12 @@ function updateQuantity() {
     }
 }
 // Increase button
-quantityIncrease === null || quantityIncrease === void 0 ? void 0 : quantityIncrease.addEventListener("click", function () {
+quantityIncrease?.addEventListener("click", () => {
     quantity++;
     updateQuantity();
 });
 // Decrease button
-quantityDecrease === null || quantityDecrease === void 0 ? void 0 : quantityDecrease.addEventListener("click", function () {
+quantityDecrease?.addEventListener("click", () => {
     if (quantity > 1) {
         quantity--;
         updateQuantity();
@@ -71,3 +100,4 @@ quantityDecrease === null || quantityDecrease === void 0 ? void 0 : quantityDecr
 });
 // initialize
 updateQuantity();
+//# sourceMappingURL=script.js.map

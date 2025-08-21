@@ -8,6 +8,26 @@
     "tailwindcss": "^4.1.12"
   },
   "scripts": {
-    "dev": "tsc --watch"
-  }
+    "dev": "tsc --watch",
+    "build:css": "tailwindcss -i ./src/index.css -o ./dist/output.css --minify",
+    "build:ts": "tsc",
+    "build": "npm run build:css && npm run build:ts  "
+  },
+  "name": "ecommerce-sneakers",
+  "version": "1.0.0",
+  "description": "![Design preview for the E-commerce product page coding challenge](./public/design/desktop-preview.jpg)",
+  "main": "script.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ejiro-Frances/ecommerce-sneakers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "types": "./script.d.ts",
+  "bugs": {
+    "url": "https://github.com/Ejiro-Frances/ecommerce-sneakers/issues"
+  },
+  "homepage": "https://github.com/Ejiro-Frances/ecommerce-sneakers#readme"
 }
