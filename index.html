@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
 
     <link
       rel="icon"
@@ -16,12 +15,12 @@
   </head>
   <body class="bg-(--light-grayish-blue) min-h-screen">
     <!-- the header -->
-    <header class="flex justify-between pt-8 px-50 shadow">
+    <header class="flex justify-between pt-8 px-5 md:px-50 shadow">
       <div class="flex items-center gap-7">
         <img src="./public/images/logo.svg" alt="logo" class="pb-7" />
         <!-- nalinks -->
-        <nav>
-          <ul class="flex items-end gap-3">
+        <nav class="">
+          <ul class="hidden md:flex items-end gap-3">
             <li class="">
               <a
                 href="#"
@@ -67,11 +66,12 @@
       </div>
 
       <!-- cart and profile -->
-      <div class="flex items-center gap-10 pb-7">
+      <div class="flex items-center gap-5 md:gap-10 pb-7">
         <img
           src="./public/images/icon-cart.svg"
           alt=""
           class="cursor-pointer"
+          loading="lazy"
         />
 
         <div class="">
@@ -85,16 +85,31 @@
     </header>
 
     <main
-      class="max-w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center px-20 py-20"
+      class="w-full md:max-w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center md:px-20 md:py-20"
     >
       <!-- picture section -->
       <section>
         <!-- display image here -->
-        <div>
+        <div
+          class="relative w-full md:w-[415px] md:h-[400px] md:rounded-xl overflow-hidden"
+        >
+          <!-- Spinner -->
+          <div
+            id="spinner"
+            class="absolute inset-0 items-center justify-center bg-white/70 hidden"
+          >
+            <div
+              class="w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"
+            ></div>
+          </div>
+
+          <!-- main image -->
           <img
             src="./public/images/image-product-1.jpg"
+            id="mainImage"
             alt="sneakers"
-            class="rounded-xl"
+            class="main-image w-full h-full object-cover"
+            loading="lazy"
           />
         </div>
 
@@ -102,58 +117,66 @@
         <div class="grid grid-cols-4 gap-5 mt-5">
           <!-- product one -->
           <div
-            class="border-2 border-transparent hover:border-(--primary) cursor-pointer transition-all duration-100 ease rounded-lg overflow-hidden hover:opacity-70"
+            class="thumbnail border-2 border-transparent hover:border-(--primary) cursor-pointer transition-all duration-100 ease rounded-lg overflow-hidden hover:opacity-70"
           >
             <img
               src="./public/images/image-product-1-thumbnail.jpg"
+              data-main="./public/images/image-product-1.jpg"
               alt="A pair of sneakers with one held slightly vertically"
               class="object-cover"
+              loading="lazy"
             />
           </div>
 
           <!-- product two -->
           <div
-            class="border-2 border-transparent hover:border-(--primary) cursor-pointer transition-all duration-100 ease rounded-lg overflow-hidden hover:opacity-70"
+            class="thumbnail border-2 border-transparent hover:border-(--primary) cursor-pointer transition-all duration-100 ease rounded-lg overflow-hidden hover:opacity-70"
           >
             <img
               src="./public/images/image-product-2-thumbnail.jpg"
               alt="A pair of sneakers with one kept on two rocks, with a stick by the side"
+              data-main="./public/images/image-product-2.jpg"
               class="object-cover"
+              loading="lazy"
             />
           </div>
 
           <!-- product three -->
           <div
-            class="border-2 border-transparent hover:border-(--primary) cursor-pointer transition-all duration-100 ease rounded-lg overflow-hidden hover:opacity-70"
+            class="thumbnail border-2 border-transparent hover:border-(--primary) cursor-pointer transition-all duration-100 ease rounded-lg overflow-hidden hover:opacity-70"
           >
             <img
               src="./public/images/image-product-3-thumbnail.jpg"
               alt="The right foot of a pair of sneakers placed on two rocks"
+              data-main="./public/images/image-product-3.jpg"
               class="object-cover"
+              loading="lazy"
             />
           </div>
 
           <!-- product four -->
           <div
-            class="border-2 border-transparent hover:border-(--primary) cursor-pointer transition-all duration-100 ease rounded-lg overflow-hidden hover:opacity-70"
+            class="thumbnail border-2 border-transparent hover:border-(--primary) cursor-pointer transition-all duration-100 ease rounded-lg overflow-hidden hover:opacity-70"
           >
             <img
               src="./public/images/image-product-4-thumbnail.jpg"
               alt="The left foot of a pair of sneakers with placed on two rocks"
+              data-main="./public/images/image-product-4.jpg"
               class="object-cover"
+              loading="lazy"
             />
           </div>
         </div>
       </section>
 
       <!-- details section -->
-      <section>
+      <section class="px-4">
         <p
           class="text-sm tracking-widest uppercase text-(--grayish-blue) font-bold"
         >
           Sneaker Company
         </p>
-        <h2 class="text-4xl text-black/90 pt-3 font-extrabold">
+        <h2 class="text-2xl md:text-4xl text-black/90 pt-3 font-extrabold">
           Fall Limited Edition Sneakers
         </h2>
         <p class="text-(--dark-grayish-blue) text-sm mt-5">
@@ -181,9 +204,23 @@
           <div
             class="bg-(--grayish-blue)/30 rounded-sm flex items-center justify-between px-4"
           >
-            <img src="./public/images/icon-minus.svg" />
-            <span>0</span>
-            <img src="./public/images/icon-plus.svg" />
+            <button
+              id="decrease"
+              class="inline-flex items-center justify-center cursor-pointer hover:bg-(--secondary) w-10 h-10 transition-all duration-150 ease-in-out"
+            >
+              <img src="./public/images/icon-minus.svg" />
+            </button>
+            <span id="quantity">1</span>
+            <button
+              id="increase"
+              class="inline-flex items-center justify-center cursor-pointer hover:bg-(--secondary) w-10 h-10 transition-all duration-150 ease-in-out"
+            >
+              <img
+                src="./public/images/icon-plus.svg"
+                alt=""
+                class="w-2.5 h-2.5"
+              />
+            </button>
           </div>
 
           <!-- cart button -->
@@ -201,4 +238,5 @@
       </section>
     </main>
   </body>
+  <script src="./dist/script.js"></script>
 </html>
