@@ -45,7 +45,7 @@ const ProductDetails = () => {
                   : "hover:bg-(--secondary)"
               }`}
           >
-            <img src="./public/images/icon-minus.svg" alt="Decrease quantity" />
+            <img src="/images/icon-minus.svg" alt="Decrease quantity" />
           </button>
           <span>{quantity}</span>
           <button
@@ -53,7 +53,7 @@ const ProductDetails = () => {
             className="inline-flex items-center justify-center cursor-pointer hover:bg-(--secondary) w-10 h-10 transition-all duration-150 ease-in-out"
           >
             <img
-              src="./public/images/icon-plus.svg"
+              src="/images/icon-plus.svg"
               alt="Increase quantity"
               className="w-2.5 h-2.5"
             />
@@ -63,7 +63,7 @@ const ProductDetails = () => {
         {/* <!-- cart button --> */}
         <button className="bg-(--primary) hover:bg-(--primary)/80 flex justify-center items-center gap-2 rounded transition-colors duration-100 ease-out cursor-pointer">
           <img
-            src="./public/images/icon-cart.svg"
+            src="/images/icon-cart.svg"
             alt="cart icon"
             className="w-4 h-4"
           />
