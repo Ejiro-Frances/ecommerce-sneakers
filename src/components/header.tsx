@@ -3,7 +3,7 @@ import { Menu, X } from "lucide-react";
 import { useCart } from "../context/CartContext";
 
 const Header = () => {
-  const { cart, removeFromCart } = useCart();
+  const { cartItems, removeFromCart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const cartRef = useRef<HTMLDivElement | null>(null);
@@ -64,13 +64,13 @@ const Header = () => {
               <div className="absolute right-0 mt-3 w-80 bg-white shadow-lg rounded-lg z-50">
                 <h3 className="px-4 py-3 font-semibold border-b">Cart</h3>
                 <div className="p-4">
-                  {cart.length === 0 ? (
+                  {cartItems.length === 0 ? (
                     <p className="p-4 text-center text-(--dark-grayish-blue)">
                       Your cart is empty
                     </p>
                   ) : (
                     <ul>
-                      {cart.map((item) => (
+                      {cartItems.map((item) => (
                         <li
                           key={item.id}
                           className="flex items-center gap-3 p-3"
@@ -96,7 +96,7 @@ const Header = () => {
                       ))}
                     </ul>
                   )}
-                  {cart.length > 0 && (
+                  {cartItems.length > 0 && (
                     <button className="bg-(--primary) hover:opacity-80 text-white w-full py-3 rounded-lg font-semibold transition">
                       Checkout
                     </button>
