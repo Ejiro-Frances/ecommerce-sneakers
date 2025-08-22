@@ -1,35 +1,32 @@
 {
-  "devDependencies": {
-    "@types/node": "^24.3.0",
-    "copyfiles": "^2.4.1",
-    "typescript": "^5.9.2"
+  "name": "ecommerce-sneakers",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.12",
+    "@tailwindcss/vite": "^4.1.12",
+    "lucide-react": "^0.540.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "tailwindcss": "^4.1.12"
   },
-  "scripts": {
-    "build:css": "tailwindcss -i ./src/index.css -o ./dist/output.css --minify",
-    "build:ts": "tsc",
-    "dev": "tsc --watch",
-    "copy:html": "cp ./src/index.html ./dist/index.html",
-    "build": "npm run build:css && npm run build:ts && npm run copy:html"
-  },
-  "name": "ecommerce-sneakers",
-  "version": "1.0.0",
-  "description": "![Design preview for the E-commerce product page coding challenge](./public/design/desktop-preview.jpg)",
-  "main": "script.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ejiro-Frances/ecommerce-sneakers.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "types": "./script.d.ts",
-  "bugs": {
-    "url": "https://github.com/Ejiro-Frances/ecommerce-sneakers/issues"
-  },
-  "homepage": "https://github.com/Ejiro-Frances/ecommerce-sneakers#readme"
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.0",
+    "eslint": "^9.33.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.39.1",
+    "vite": "^7.1.2"
+  }
 }

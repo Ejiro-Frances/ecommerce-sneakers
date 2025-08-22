@@ -1,0 +1,5 @@
+- clicking on an image will show up in the main image
+- set up cart, hide it and make it dynamic
+- add cart will update the cart component
+- active states for nav links
+- add plus and minus

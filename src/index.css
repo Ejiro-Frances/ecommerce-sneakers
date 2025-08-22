@@ -12,6 +12,11 @@
   --black: hsl(0, 0%, 0%);
 }
 
-body {
+:root {
   font-family: "Kumbh Sans", sans-serif;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

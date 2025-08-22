@@ -41,7 +41,7 @@ Users should be able to:
 
 ### Built with
 
-- Semantic HTML5 markup
+- React
 - Tailwind CSS
 - Mobile-first workflow
 
