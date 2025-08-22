@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
-import { useCart } from "../context/CartContext";
-
+import { useCart } from "../context/cartcontext";
 const Header = () => {
   const { cartItems, removeFromCart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
